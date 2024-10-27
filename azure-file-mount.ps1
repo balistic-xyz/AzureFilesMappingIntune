@@ -89,6 +89,8 @@ $scriptCode = '
         $shareName = $share.value.shareName
         $driveLetter = $share.key
 
+        net use ($driveLetter + ":") /delete
+
         $fullURL = Join-Path $storageEndpoint -ChildPath $shareName
 
             if (Test-Path -Path "\\$fullURL")
@@ -106,7 +108,6 @@ $scriptCode = '
             else
             {
                 Add-Content -Path "$ENV:USERPROFILE\AZURE_MNT_log.txt" -Value "$driveLetter - $shareName access check failed"
-                net use ($driveLetter + ":") /delete
             }
     }
 '
