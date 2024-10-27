@@ -70,20 +70,12 @@ catch
 $scriptCode = '
     $shares = @{
         "Y" = @{  # drive letter
-            "storageEndpoint" = "azuremntintunescript.file.core.windows.net"  # endpoint, ex: yourstorageaccount.file.core.windows.net
-            "shareName" = "it-share"  # share name, ex: yourshare or yourshare\folder
+            "storageEndpoint" = "endpointname.file.core.windows.net"  # endpoint, ex: yourstorageaccount.file.core.windows.net
+            "shareName" = "share name"  # share name, ex: yourshare or yourshare\folder
         }
         "X" = @{  # drive letter
-            "storageEndpoint" = "azuremntintunescript.file.core.windows.net"  # endpoint, ex: yourstorageaccount.file.core.windows.net
-            "shareName" = "it-share\child folder 01"  # share name, ex: yourshare or yourshare\folder
-        }
-        "W" = @{  # drive letter
-            "storageEndpoint" = "azuremntintunescript.file.core.windows.net"  # endpoint, ex: yourstorageaccount.file.core.windows.net
-            "shareName" = "it-share\child folder 02"  # share name, ex: yourshare or yourshare\folder
-        }
-        "V" = @{  # drive letter
-            "storageEndpoint" = "azuremntintunescript.file.core.windows.net"  # endpoint, ex: yourstorageaccount.file.core.windows.net
-            "shareName" = "hr-share"  # share name, ex: yourshare or yourshare\folder
+            "storageEndpoint" = "endpointname.file.core.windows.net"  # endpoint, ex: yourstorageaccount.file.core.windows.net
+            "shareName" = "share name\child folder 01"  # share name, ex: yourshare or yourshare\folder
         }
     }
 
