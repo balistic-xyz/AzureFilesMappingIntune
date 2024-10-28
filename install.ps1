@@ -3,6 +3,7 @@ if (-not(Test-Path -Path 'C:\Program Files\Intune scripts'))
     New-Item -Path "C:\Program Files\" -Name "Intune scripts" -ItemType "directory"
 }
 
+# try to register the task
 try
 {
     if(-not(Get-ScheduledTask | Where-Object {$_.TaskName -like "ACME-Azure-file-mount" }))
@@ -69,20 +70,12 @@ catch
 $scriptCode = '
     $shares = @{
         "Y" = @{  # drive letter
-            "storageEndpoint" = "azuremntintunescript.file.core.windows.net"  # endpoint, ex: yourstorageaccount.file.core.windows.net
-            "shareName" = "it-share"  # share name, ex: yourshare or yourshare\folder
+            "storageEndpoint" = "endpointname.file.core.windows.net"  # endpoint, ex: yourstorageaccount.file.core.windows.net
+            "shareName" = "share name"  # share name, ex: yourshare or yourshare\folder
         }
         "X" = @{  # drive letter
-            "storageEndpoint" = "azuremntintunescript.file.core.windows.net"  # endpoint, ex: yourstorageaccount.file.core.windows.net
-            "shareName" = "it-share\child folder 01"  # share name, ex: yourshare or yourshare\folder
-        }
-        "W" = @{  # drive letter
-            "storageEndpoint" = "azuremntintunescript.file.core.windows.net"  # endpoint, ex: yourstorageaccount.file.core.windows.net
-            "shareName" = "it-share\child folder 02"  # share name, ex: yourshare or yourshare\folder
-        }
-        "V" = @{  # drive letter
-            "storageEndpoint" = "azuremntintunescript.file.core.windows.net"  # endpoint, ex: yourstorageaccount.file.core.windows.net
-            "shareName" = "hr-share"  # share name, ex: yourshare or yourshare\folder
+            "storageEndpoint" = "endpointname.file.core.windows.net"  # endpoint, ex: yourstorageaccount.file.core.windows.net
+            "shareName" = "share name\child folder 01"  # share name, ex: yourshare or yourshare\folder
         }
     }
 
@@ -115,36 +108,7 @@ $scriptCode = '
             else
             {
                 Add-Content -Path "$ENV:USERPROFILE\AZURE_MNT_log.txt" -Value "$driveLetter - $shareName access check failed"
-                #net use ($driveLetter + ":") /delete
             }
     }
 '
 $scriptCode | Out-File "C:\Program Files\Intune scripts\azure-mnt.ps1"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
