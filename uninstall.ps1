@@ -1,6 +1,6 @@
 $taskName = "ACME-Azure-file-mount"
 
-$taskResult = Unregister-ScheduledTask -TaskName $taskName
+$taskResult = Unregister-ScheduledTask -TaskName $taskName -Confirm:$false
 
 $taskExists = Get-ScheduledTask -TaskName $taskName
 
